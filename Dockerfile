@@ -5,4 +5,4 @@ WORKDIR $GHOST_INSTALL
 COPY . .
 
 ENTRYPOINT []
-CMD ["node current/index.js"]
+CMD ["node", "current/index.js"]
