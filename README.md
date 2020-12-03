@@ -17,6 +17,15 @@ For details of the implementation feel free to checkout https://github.com/activ
 
 ## tldr Usage:
 
+### Creating a `myName.js` helper
+
+```js
+// filename = myName.js
+module.exports = function myName(options) {
+    return 'hello there';
+};
+```
+
 ### In Dockerfile:
 
 ```Dockerfile
