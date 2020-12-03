@@ -16,3 +16,10 @@ baseDir="$GHOST_INSTALL/content.orig"
 	done
 
 node updateConfig.js
+
+# adding a helper that allows to execute more scripting before ghost is started
+if test -f "$EXECUTE_BEFORE_STARTUP"; then
+    ./"$EXECUTE_BEFORE_STARTUP"
+fi
+
+node current/index.js
