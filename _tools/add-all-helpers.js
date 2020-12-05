@@ -50,7 +50,7 @@ if (helperFilesSyncSrcDirExists) {
 
 // async-files
 if (helperFilesAsyncSrcDirExists) {
-  const asyncHelperFilesAll = fs.readdirSync(HELPER_FILES_SYNC_SCR_DIR);
+  const asyncHelperFilesAll = fs.readdirSync(HELPER_FILES_ASYNC_SCR_DIR);
   exitOnInvalidHelperFiles(asyncFileHelpers);
   asyncFileHelpers = asyncHelperFilesAll.filter((fileName) => /^[\w_]+\.js$/.test(fileName));
 }
