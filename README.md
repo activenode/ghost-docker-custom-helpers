@@ -40,6 +40,10 @@ FROM activenode/ghost-docker-custom-helpers:latest
 
 # this tells the script that it should run a before.sh file before startup
 ENV EXECUTE_BEFORE_STARTUP before.sh
+
+# making sure to delete the preset helpers (you can keep them but you dont need them)
+RUN rm -rf custom-helpers
+
 COPY . .
 ```
 
