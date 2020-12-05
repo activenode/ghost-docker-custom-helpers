@@ -1,7 +1,7 @@
 # [Ghost](https://ghost.org/) Dockerfile with Custom Helpers support
 
 ## tldr:
-1. Create `custom-helpers/` directory with your `helper-whatever.js` hbs helpers
+1. Do `mkdir custom-helpers/{default,async}` directory with your `default/syncHelper.js` or `async/asyncHelper.js` hbs helpers
 2. Make sure a `custom-helpers/` directory is copied into the containers working directory (`COPY custom-helpers custom-helpers` or mount via `-v` flag)
 3. Run it and use your helpers in your template from now on.
 
@@ -20,7 +20,8 @@ For details of the implementation feel free to checkout https://github.com/activ
 ### Creating a `myName.js` helper
 
 ```js
-// filename = myName.js
+// filename = myName.js - do NOT use dashes since they are not valid function names
+// and therefore also not valid filenames here!
 module.exports = function myName(options) {
     return 'hello there';
 };
@@ -29,13 +30,13 @@ module.exports = function myName(options) {
 ### In Dockerfile:
 
 ```Dockerfile
-FROM activenode/ghost-docker-custom-helpers:3.39
+FROM activenode/ghost-docker-custom-helpers:latest
 ```
 
 if you want to run your own scripts before startup of Ghost do the following:
 
 ```Dockerfile
-FROM activenode/ghost-docker-custom-helpers:3.39
+FROM activenode/ghost-docker-custom-helpers:latest
 
 # this tells the script that it should run a before.sh file before startup
 ENV EXECUTE_BEFORE_STARTUP before.sh
@@ -45,5 +46,5 @@ COPY . .
 ### `docker run`
 
 ```
-docker run --publish 8000:10000 --detach -v /HOST/content:/var/lib/ghost/content -v /HOST/custom-helpers:/var/lib/ghost/custom-helpers activenode/ghost-docker-custom-helpers:3.39
+docker run --publish 8000:10000 --detach -v /HOST/content:/var/lib/ghost/content -v /HOST/custom-helpers:/var/lib/ghost/custom-helpers activenode/ghost-docker-custom-helpers:latest
 ```
