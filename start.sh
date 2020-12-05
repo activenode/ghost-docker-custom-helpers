@@ -3,7 +3,7 @@ set -o errexit
 
 # INFO: $GHOST_VERSION is a globally available variable
 # executing the tool that installs our custom helpers
-node ./_tools/helper-adder.js
+node ./_tools/add-all-helpers.js
 
 baseDir="$GHOST_INSTALL/content.orig"
 	for src in "$baseDir"/*/ "$baseDir"/themes/*; do
