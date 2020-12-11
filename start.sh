@@ -5,7 +5,7 @@ set -o errexit
 # executing the tool that installs our custom helpers
 node ./_tools/add-all-helpers.js
 
-ls -al versions/3.39.0/core/frontend/helpers
+ls -al versions/$GHOST_VERSION/core/frontend/helpers
 
 baseDir="$GHOST_INSTALL/content.orig"
 	for src in "$baseDir"/*/ "$baseDir"/themes/*; do
